@@ -1,0 +1,7 @@
+machine:
+  python:
+    version: 2.6.8
+test:
+  override:
+    - ./test/unittest.sh $(pwd)/
+
