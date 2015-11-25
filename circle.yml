@@ -7,5 +7,6 @@ test:
     #- cp /tmp/new_domain_redis_agent_test/report/* $CIRCLE_ARTIFACTS/
     - mkdir -p /tmp/new_domain_redis_agent_test
     - cp bin/new_domain_redis_agent.py /tmp/new_domain_redis_agent_test
+    - cp test/unittest/unittest_new_domain_redis_agent.py /tmp/new_domain_redis_agent_test
     - mkdir -p /tmp/new_domain_redis_agent_test/report
     - nosetests -v -s -x --with-xunit --xunit-file=/tmp/new_domain_redis_agent_test/report/redis_agent_unit_result.xml --cover-erase --with-coverage --cover-package=new_domain_redis_agent -w /tmp/new_domain_redis_agent_test unittest_new_domain_redis_agent.py 
