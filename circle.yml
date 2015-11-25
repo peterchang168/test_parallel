@@ -4,4 +4,4 @@ machine:
 test:
   override:
     - ./test/unittest.sh $(pwd)/
-
+    - cp /tmp/new_domain_redis_agent_test/report/* $CIRCLE_ARTIFACTS/ 
