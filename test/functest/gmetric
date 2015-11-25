@@ -1,0 +1,12 @@
+#!/bin/sh
+
+out="["
+
+for param in ${@}
+do
+	out="${out}\"${param}\","
+done
+
+out="${out}]"
+
+echo "${out}" >> /tmp/redis_agent_functest/gmetric_out

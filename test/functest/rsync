@@ -1,0 +1,53 @@
+#!/bin/sh
+# rsync command is 'rsync -crvt --delete --size-only rsync://127.0.0.1/trend/new_domain/ptn/ /trend/new_domain/raptn'
+out=""
+
+for param in ${@}
+do
+        out="${out}${param} "
+done
+
+#/bin/echo "${0} ${out}" >>  /tmp/redis_agent_functest/rsync_log
+
+# sleep
+#/bin/sleep 1
+
+host_n_src=${4}
+dest=${5}
+declare -a arr
+
+arr=(`echo ${host_n_src//// }`)
+
+
+host=${arr[1]}
+count=${#arr[@]}
+src=""
+for (( i=2;i<$count;i++)); do
+    src=${src}/${arr[${i}]}
+done 
+
+if [ "$host" = "127.0.0.1" ] || [ "$host" = "127.0.0.11" ]; then 
+    /bin/sleep 2
+elif [ "$host" = "127.0.0.2" ] || [ "$host" = "127.0.0.12" ] || [ "$host" = "127.0.0.22" ] ; then 
+    /bin/sleep 5
+    exit 0
+elif [ "$host" = "127.0.0.3" ] || [ "$host" = "127.0.0.13" ] || [ "$host" = "127.0.0.23" ] ; then
+    exit -1
+fi
+
+if [ -d ${src} ] ; then
+    /bin/cp -r /${src}/* ${dest}
+    if [ "$host" = "127.0.0.11" ] ; then
+        src_filelist="${src}/filelist.txt.11"
+        dest_filelist="${dest}/filelist.txt"
+        /bin/cp  ${src_filelist} ${dest_filelist}
+    fi
+else
+    if [ "$host" = "127.0.0.11" ] ; then
+        src+=".11"
+        /bin/cp /${src} ${dest}
+    else 
+        /bin/cp /${src} ${dest}
+    fi
+fi
+exit 0

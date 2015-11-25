@@ -1,0 +1,26 @@
+#!/bin/sh
+# rsync command is 'rsync -crvt --delete --size-only --timeout=600 rsync://127.0.0.1/trend/new_domain/ptn/ /trend/new_domain/raptn'
+out=""
+
+for param in ${@}
+do
+        out="${out}${param} "
+done
+
+#/bin/echo "${0} ${out}" >>  /tmp/redis_agent_functest/rsync_log
+
+# sleep
+/bin/sleep 3 
+
+host_n_src=${5}
+dest=${6}
+
+var=$(echo $host_n_src | /bin/awk -F"127.0.0.1" '{print $1,$2}')
+set -- $var
+src=${2}
+echo ${src}
+echo ${dest}
+
+/bin/cp -r ${src}/* ${dest} 
+
+exit 0
