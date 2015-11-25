@@ -48,14 +48,14 @@ cd ${TEST_TMP_DIR}
 
 # composite options
 OPTIONS="-v -s -x"
-#OPTIONS="${OPTIONS} --with-xunit --xunit-file=${TEST_REPORT_FILE_PATH}"
-#OPTIONS="${OPTIONS} --cover-erase --with-coverage --cover-package=${TEST_PACKAGES}"
+OPTIONS="${OPTIONS} --with-xunit --xunit-file=${TEST_REPORT_FILE_PATH}"
+OPTIONS="${OPTIONS} --cover-erase --with-coverage --cover-package=${TEST_PACKAGES}"
 OPTIONS="${OPTIONS} -w ${TEST_TMP_DIR} ${TEST_SCRIPTS}"
 # call nosetests
 nosetests ${OPTIONS}
 test_result=$?
 # convert xml report
-#coverage xml -o ${TEST_REPORT_DIR}/redis_agent_coverage.xml ${TEST_TMP_DIR}/new_domain_redis_agent.py
+coverage xml -o ${TEST_REPORT_DIR}/redis_agent_coverage.xml ${TEST_TMP_DIR}/new_domain_redis_agent.py
 
 if [ "${test_result}" -ne "0" ]; then
 	echo "error: unit test failed!"
