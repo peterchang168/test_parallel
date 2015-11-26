@@ -1,6 +1,11 @@
 machine:
   python:
     version: 2.6.8
+
+dependencies:
+  post:
+    - pip install coverage
+
 test:
   override:
     #- ./test/unittest.sh $(pwd)/
