@@ -18,5 +18,5 @@ test:
     - coverage xml -o /tmp/new_domain_redis_agent_test/report/redis_agent_coverage.xml /tmp/new_domain_redis_agent_test/new_domain_redis_agent.py
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - ls -l $CIRCLE_TEST_REPORTS/junit/
+    - ls -l $CIRCLE_TEST_REPORTS/
     - mv /tmp/new_domain_redis_agent_test/report/* $CIRCLE_ARTIFACTS/junit
