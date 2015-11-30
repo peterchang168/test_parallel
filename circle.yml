@@ -19,4 +19,5 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - ls -l $CIRCLE_TEST_REPORTS/
+    - find /tmp/new_domain_redis_agent_test/report -type f -regex "*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - mv /tmp/new_domain_redis_agent_test/report/* $CIRCLE_ARTIFACTS/junit
