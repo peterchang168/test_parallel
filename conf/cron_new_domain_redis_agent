@@ -1,3 +1,0 @@
-# hourly cronjob to fork redis agent
-45 * * * * alps /trend/new_domain/bin/new_domain_redis_agent.py -c  /trend/new_domain/conf/new_domain_redis_agent.conf >> /trend/new_domain/log/new_domain_redis_agent.startlog 2>&1
-

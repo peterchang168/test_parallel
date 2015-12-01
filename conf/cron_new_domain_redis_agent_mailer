@@ -1,3 +1,0 @@
-# cronjob to send email
-5,15,25,35,45,55 * * * * alps python2.6 /trend/new_domain/bin/new_domain_service_mailer.py -c  /trend/new_domain/conf/new_domain_redis_agent.conf >> /trend/new_domain/log/new_domain_mail.startlog 2>&1
-
