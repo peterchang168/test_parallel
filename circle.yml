@@ -1,9 +1,3 @@
-general:
-  branches:
-    only:
-      # list of branches to build
-      - master   
-
 machine:
   python:
     version: 2.6.8
